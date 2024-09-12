@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Support</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://t4.ftcdn.net/jpg/05/05/23/29/360_F_505232936_ohw9Z57pjFaAdGupZ44MYYtYiDzDhHM2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-size: 25px;
+        }
+        #support {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: red;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input, select, textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-size: 20px;
+        }
+        input.error, textarea.error, select.error {
+            border-color: red;
+        }
+        textarea {
+            resize: vertical;
+            height: 50px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color:aquamarine;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 30px;
+        }
+        button:hover {
+            background-color:aquamarine;
+        }
+        .error-message {
+            color: red;
+            font-size: 20px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="support">
+        <h2>Customer Support</h2>
+        <form id="supportForm" action="submit_query.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <div id="nameError" class="error-message"></div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <div id="emailError" class="error-message"></div>
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+            <div id="phoneError" class="error-message"></div>
+
+            <label for="model">Select Model:</label>
+            <select id="model" name="model" required>
+                <option value="2024-X">2024-X</option>
+                <option value="2024-Y">2024-Y</option>
+                <option value="2023-A">2023-A</option>
+                <option value="2023-B">2023-B</option>
+            </select>
+
+            <label for="message">Your Queries:</label>
+            <textarea id="message" name="message" required></textarea>
+            <div id="messageError" class="error-message"></div>
+
+            <label>
+                <input type="checkbox" name="quotation" value="yes"> Request a quotation
+            </label>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <script>
+        // Get form and inputs
+        const form = document.getElementById('supportForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const messageInput = document.getElementById('message');
+
+        // Add event listener for form submission
+        form.addEventListener('submit', function(event) {
+            // Clear previous errors
+            clearErrors();
+
+            // Validate form inputs
+            let valid = true;
+
+            // Name validation
+            if (nameInput.value.trim() === "") {
+                showError(nameInput, "Name is required");
+                valid = false;
+            }
+
+            // Email validation
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(emailInput.value.trim())) {
+                showError(emailInput, "Please enter a valid email address");
+                valid = false;
+            }
+
+            // Phone validation (only digits)
+            const phonePattern = /^\d+$/;
+            if (!phonePattern.test(phoneInput.value.trim())) {
+                showError(phoneInput, "Phone number must contain only digits");
+                valid = false;
+            }
+
+            // Message validation
+            if (messageInput.value.trim() === "") {
+                showError(messageInput, "Query is required");
+                valid = false;
+            }
+
+            // Prevent form submission if validation fails
+            if (!valid) {
+                event.preventDefault();
+            } else {
+                alert("Form submitted successfully!");
+            }
+        });
+
+        // Function to show error
+        function showError(input, message) {
+            const errorMessage = input.nextElementSibling;
+            input.classList.add('error');
+            errorMessage.textContent = message;
+        }
+
+        // Function to clear errors
+        function clearErrors() {
+            const errorFields = document.querySelectorAll('.error');
+            errorFields.forEach(field => field.classList.remove('error'));
+
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(msg => msg.textContent = '');
+        }
+    </script>
+
+</body>
+</html>

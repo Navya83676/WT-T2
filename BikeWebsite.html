@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TVS Automobiles - Home</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+
+      font-family: Arial, sans-serif;
+      background-image: url("B1.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .navbar {
+      background-color: #343a40;
+    }
+    .carousel-item img {
+      object-fit: 100ch;
+      height: 370px;
+    }
+   .img{
+        width: 1000px;
+        height: 200px;
+    }
+    .thumbnail-section {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .header-text {
+      text-align: center;
+      margin: 50px;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">TVS Automobiles</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="model.html">Models</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="support.html">Support</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header Section -->
+  <div class="header-text">
+    <h1>Welcome to TVS Automobiles</h1>
+    <p>Discover our latest bike models and features.</p>
+  </div>
+
+  <!-- Carousel for Sliding Images -->
+  <div id="bikeCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <span style="padding-left:500px"></span><img src="N1.jpg" alt="Bike 1">
+      </div>
+      <div class="carousel-item">
+        <span style="padding-left:500px"></span> <img src="N5.jpg" alt="Bike 2">
+      </div>
+      <div class="carousel-item">
+        <span style="padding-left:500px"></span> <img src="N3.jpg" alt="Bike 3">
+      </div>
+      <div class="carousel-item">
+        <span style="padding-left:500px"></span> <img src="N4.jpg" alt="Bike 4">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#bikeCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#bikeCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="text-center py-4">
+    <p>&copy; 2024 TVS Automobiles. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function jumpToSlide(slideIndex) {
+      $('#bikeCarousel').carousel(slideIndex);
+    }
+  </script>
+</body>
+</html>
